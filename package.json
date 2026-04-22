@@ -1,0 +1,23 @@
+{
+  "name": "brand-color-extractor",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently --names \"API,VITE\" --prefix-colors \"magenta,cyan\" \"node server/index.js\" \"vite\"",
+    "server": "node server/index.js",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.0.9"
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jimp": "^1.6.1",
+    "puppeteer": "^24.42.0",
+    "sharp": "^0.34.5"
+  }
+}

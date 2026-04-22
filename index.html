@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paletto — Brand Color Extractor</title>
+  <meta name="description"
+    content="Steal the exact colors top brands use in seconds. Paletto analyzes CSS, buttons, links, and SVGs to find the true brand palette." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+
+  <!-- ── MESH BG ── -->
+  <div class="mesh" aria-hidden="true">
+    <div class="mesh__orb mesh__orb--1"></div>
+    <div class="mesh__orb mesh__orb--2"></div>
+    <div class="mesh__orb mesh__orb--3"></div>
+  </div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <!-- Brand -->
+      <a href="/" class="navbar__brand" aria-label="Paletto home">
+        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="10" cy="11" r="6.5" fill="#7c6cfc" opacity="0.9" />
+          <circle cx="22" cy="11" r="6.5" fill="#06b6d4" opacity="0.9" />
+          <circle cx="16" cy="21" r="6.5" fill="#f472b6" opacity="0.9" />
+        </svg>
+        <span class="navbar__logo-text">Paletto</span>
+      </a>
+
+      <!-- Center: nav links -->
+      <div class="navbar__links">
+        <a href="#extractor-card" class="navbar__link">Extract</a>
+        <a href="#how" class="navbar__link">How it works</a>
+      </div>
+
+      <!-- Right: GitHub + creator -->
+      <div class="navbar__right">
+        <a href="https://github.com/nihal-b" target="_blank" rel="noopener" class="navbar__github"
+          aria-label="View on GitHub">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
+          </svg>
+          <span>nihal-b</span>
+        </a>
+        <a href="https://github.com/nihal-b" target="_blank" rel="noopener" class="navbar__portfolio"
+          aria-label="Creator portfolio">
+          <span class="navbar__avatar" aria-hidden="true">N</span>
+          <span class="navbar__creator-name">Portfolio</span>
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.4"
+              stroke-linecap="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ APP ══ -->
+  <div class="app">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        <span>Hybrid CSS + visual extraction</span>
+      </div>
+      <h1 class="hero__title">
+        Steal the <span class="hero__gradient">exact colors</span><br />
+        top brands use - in seconds
+      </h1>
+      <p class="hero__sub">
+        Enter any URL and Paletto scans CSS variables, theme-color meta tags,
+        buttons, links &amp; SVGs to surface the <strong>true brand palette</strong>.
+      </p>
+    </header>
+
+    <!-- EXTRACTOR CARD -->
+    <main>
+      <section class="card" id="extractor-card">
+
+        <!-- Form -->
+        <form id="extract-form" novalidate>
+          <div class="input-row" id="input-group">
+            <div class="input-wrap">
+              <svg class="input-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M13 13L17 17M8.5 15a6.5 6.5 0 100-13 6.5 6.5 0 000 13z" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+              <input type="url" id="url-input" class="input" placeholder="https://stripe.com" autocomplete="off"
+                spellcheck="false" aria-label="Website URL" />
+            </div>
+            <button type="submit" id="extract-btn" class="btn-extract" aria-label="Extract colors">
+              <span class="btn-extract__label">Extract</span>
+              <span class="btn-extract__loader" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div id="error-bar" class="error-bar" role="alert" aria-live="polite"></div>
+        </form>
+
+        <!-- Quick picks -->
+        <div class="picks">
+          <span class="picks__label">Quick picks</span>
+          <div class="picks__list">
+            <button class="chip" data-url="https://stripe.com" type="button">
+              <img src="https://www.google.com/s2/favicons?domain=stripe.com&sz=32" width="12" height="12" alt=""
+                loading="lazy" />
+              Stripe
+            </button>
+            <button class="chip" data-url="https://linear.app" type="button">
+              <img src="https://www.google.com/s2/favicons?domain=linear.app&sz=32" width="12" height="12" alt=""
+                loading="lazy" />
+              Linear
+            </button>
+            <button class="chip" data-url="https://vercel.com" type="button">
+              <img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=32" width="12" height="12" alt=""
+                loading="lazy" />
+              Vercel
+            </button>
+            <button class="chip" data-url="https://github.com" type="button">
+              <img src="https://www.google.com/s2/favicons?domain=github.com&sz=32" width="12" height="12" alt=""
+                loading="lazy" />
+              GitHub
+            </button>
+            <button class="chip" data-url="https://spotify.com" type="button">
+              <img src="https://www.google.com/s2/favicons?domain=spotify.com&sz=32" width="12" height="12" alt=""
+                loading="lazy" />
+              Spotify
+            </button>
+            <button class="chip" data-url="https://figma.com" type="button">
+              <img src="https://www.google.com/s2/favicons?domain=figma.com&sz=32" width="12" height="12" alt=""
+                loading="lazy" />
+              Figma
+            </button>
+          </div>
+        </div>
+
+        <!-- Divider + Results -->
+        <hr id="divider" class="divider" hidden />
+        <div id="results" class="results" hidden>
+
+          <!-- Results header -->
+          <div class="results__top">
+            <div>
+              <div class="results__badge">Brand Palette</div>
+              <div id="results-url" class="results__url"></div>
+            </div>
+            <button id="copy-all-btn" class="btn-ghost" type="button">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              Copy All
+            </button>
+          </div>
+
+          <!-- Swatches -->
+          <div id="swatches" class="swatches" role="list"></div>
+
+          <!-- Export row -->
+          <div class="export-row">
+            <span class="export-row__label">Export as</span>
+            <button class="export-btn" id="export-css" type="button" title="Copy as CSS custom properties">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+              CSS Vars
+            </button>
+            <button class="export-btn" id="export-tailwind" type="button" title="Copy as Tailwind config">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+              Tailwind
+            </button>
+            <button class="export-btn" id="export-json" type="button" title="Copy as JSON array">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <polyline points="4 7 4 4 20 4 20 7" />
+                <line x1="9" y1="20" x2="15" y2="20" />
+                <line x1="12" y1="4" x2="12" y2="20" />
+              </svg>
+              JSON
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="how" id="how">
+        <h2 class="how__title">How it works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step__num">01</div>
+            <div>
+              <h3 class="step__h">Visit</h3>
+              <p class="step__p">Headless Chrome loads the full page — JS, CSS, fonts, and all.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__num">02</div>
+            <div>
+              <h3 class="step__h">Analyze</h3>
+              <p class="step__p">We inspect theme-color meta, CSS variables, buttons, links, SVGs &amp; navbars —
+                ignoring ads &amp; third-party content.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__num">03</div>
+            <div>
+              <h3 class="step__h">Extract</h3>
+              <p class="step__p">Colors are scored by brand-relevance, deduplicated, and the top 5 unique brand colors
+                are returned.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Made by <a href="https://github.com/nihal-b" target="_blank" rel="noopener">nihal-b</a> · Powered by Puppeteer,
+        Express &amp; Sharp</p>
+    </footer>
+  </div>
+
+  <!-- 21st-style toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <div class="toast__icon">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    </div>
+    <span id="toast-msg"></span>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
