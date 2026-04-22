@@ -43,6 +43,23 @@ app.post('/api/extract', async (req, res) => {
     });
   }
 
+  // SSRF Protection: Block internal IPs and localhost
+  const hostname = parsedUrl.hostname.toLowerCase();
+  const isInternal = 
+    hostname === 'localhost' || 
+    hostname === '127.0.0.1' || 
+    hostname.startsWith('10.') || 
+    hostname.startsWith('192.168.') || 
+    /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(hostname) ||
+    hostname.startsWith('169.254.'); // Cloud metadata
+
+  if (isInternal) {
+    return res.status(403).json({
+      error: 'Access to internal or private addresses is forbidden.',
+      code: 'FORBIDDEN_ADDRESS',
+    });
+  }
+
   try {
     console.log(`[extract] Visiting: ${url}`);
     const colors = await extractColors(url);
@@ -69,3 +86,5 @@ app.listen(PORT, () => {
   console.log(`\n🎨 Brand Color Extractor API running on http://localhost:${PORT}`);
   console.log(`   POST /api/extract — { url: string }\n`);
 });
+
+export default app;

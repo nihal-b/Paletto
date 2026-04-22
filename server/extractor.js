@@ -84,10 +84,24 @@ function screenshotKmeans(rawRgba, k = 6) {
 }
 
 export async function extractColors(url) {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox','--disable-setuid-sandbox','--disable-dev-shm-usage','--disable-gpu'],
-  });
+  let browser;
+  const isVercel = process.env.VERCEL === '1';
+
+  if (isVercel) {
+    const puppeteerCore = await import('puppeteer-core');
+    const chromium = await import('@sparticuz/chromium');
+    browser = await puppeteerCore.default.launch({
+      args: chromium.default.args,
+      defaultViewport: chromium.default.defaultViewport,
+      executablePath: await chromium.default.executablePath(),
+      headless: chromium.default.headless,
+    });
+  } else {
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
+    });
+  }
 
   try {
     const page = await browser.newPage();
