@@ -82,9 +82,11 @@ app.post('/api/extract', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`\n🎨 Brand Color Extractor API running on http://localhost:${PORT}`);
-  console.log(`   POST /api/extract — { url: string }\n`);
-});
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`\n🎨 Brand Color Extractor API running on http://localhost:${PORT}`);
+    console.log(`   POST /api/extract — { url: string }\n`);
+  });
+}
 
 export default app;
