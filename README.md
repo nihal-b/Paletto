@@ -6,10 +6,11 @@ Paletto uses a hybrid approach: it inspects the page's CSS properties, theme-col
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Live Demo
+Visit the app at: **[paletto-nine.vercel.app](https://paletto-nine.vercel.app)**
 
+## 🛠️ Quick Start (Local)
 ```bash
-cd /home/nihal-b/Desktop/Workspace/Personal/brand-color-extractor
 npm install
 npm run dev
 ```
